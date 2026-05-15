@@ -7,12 +7,16 @@ class Entity(ABC):
     lifebarLength = 20
 
     def attack(self, entityToBeAttacked):
+        critical = False
         totalDamage = self.getDamage()
 
         if(random.randint(0,100) <= self.getCriticalRate()):
             totalDamage = totalDamage + self.criticalDamage
+            critical = True
             
         entityToBeAttacked.setLife(entityToBeAttacked.getLife() - totalDamage)
+
+        return {"totalDamage": totalDamage, "critical": critical}
 
     def defend(self):
         pass

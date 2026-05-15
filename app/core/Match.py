@@ -20,11 +20,11 @@ class Match(Entity):
         playerAction = playerInputHandler.getAction()
         
         if(playerAction == 1):
-            self.leftEntity.attack(self.righEntity)
-            print(BannerFactory.create(1))
+            leftAttackData = self.leftEntity.attack(self.righEntity)
+            print(BannerFactory.create("Hero", leftAttackData["critical"]))
 
-            self.righEntity.attack(self.leftEntity)
-            print(BannerFactory.create(3))
+            rightAttackData = self.righEntity.attack(self.leftEntity)
+            print(BannerFactory.create("Monster", rightAttackData["critical"]))
         elif(playerAction == 2):
             self.leftEntity.defend()
 

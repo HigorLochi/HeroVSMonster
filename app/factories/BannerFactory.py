@@ -1,13 +1,13 @@
 from app.variables.banners import *
 
 class BannerFactory:
-    def create(banner):
-        match banner:
-            case 1:
+    def create(entity, critical):
+        match (entity, critical):
+            case ("Hero", False):
                 return heroAttack
-            case 2:
+            case ("Hero", True):
                 return heroCritical
-            case 3:
+            case ("Monster", False):
                 return monsterAttack
-            case 4:
+            case ("Monster", True):
                 return monsterCritical

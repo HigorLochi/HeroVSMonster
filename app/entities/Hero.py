@@ -6,4 +6,4 @@ class Hero(Entity):
     life = 100
     minimumDamage = 1
     maximumDamage = 10
-    criticalRate = 20
+    criticalRate = 40

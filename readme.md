@@ -19,7 +19,7 @@ Defeat the opponent
 ### Overall stats
 1. Player life = 100
 2. Player damage = 1 - 10
-3. Player critical rate = 20%
+3. Player critical rate = 40%
 4. Monster life = 150
 5. Monster damage = 5 - 15
 6. Monster critical rate = 20%
