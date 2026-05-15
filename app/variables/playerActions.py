@@ -1,0 +1,1 @@
+playerActions = ["Attack", "Defend"]
