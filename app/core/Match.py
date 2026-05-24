@@ -1,8 +1,10 @@
-from app.entities.Entity import Entity
+import random
+
 from app.factories.BannerFactory import BannerFactory
 from app.handlers.PlayerInputHandler import PlayerInputHandler
+from app.variables.entityActions import entityActions
 
-class Match(Entity):
+class Match():
     roundsCount = 0
 
     def __init__(self, leftEntity, righEntity):
@@ -10,23 +12,38 @@ class Match(Entity):
         self.righEntity = righEntity
 
     def round(self):
+        playerInputHandler = PlayerInputHandler()
+
         self.incrementRoundCounter()
         self.printRound()
+
+        self.leftEntity.resetState()
+        self.righEntity.resetState()
 
         self.leftEntity.printLifeBar()
         self.righEntity.printLifeBar()
 
-        playerInputHandler = PlayerInputHandler()
         playerAction = playerInputHandler.getAction()
-        
-        if(playerAction == 1):
-            leftAttackData = self.leftEntity.attack(self.righEntity)
-            print(BannerFactory.create("Hero", leftAttackData["critical"]))
+        playerActionMethod = getattr(self.leftEntity, playerAction)
+        if(playerAction == "attack"):
+            leftAttackData = playerActionMethod(self.righEntity)
 
-            rightAttackData = self.righEntity.attack(self.leftEntity)
-            print(BannerFactory.create("Monster", rightAttackData["critical"]))
-        elif(playerAction == 2):
-            self.leftEntity.defend()
+            print("Damage Dealt: " + str(leftAttackData['totalDamage']))
+            print(BannerFactory.create(self.leftEntity.getName(), playerAction, leftAttackData["critical"]))
+        else:
+            playerActionMethod()
+            print(BannerFactory.create(self.leftEntity.getName(), playerAction))
+
+        monsterAction = entityActions[random.randint(0, len(entityActions) - 1)]
+        monsterActionMethod = getattr(self.righEntity, monsterAction)
+        if(monsterAction == "attack"):
+            rightAttackData = monsterActionMethod(self.leftEntity)
+            
+            print("Damage Received: " + str(rightAttackData['totalDamage']))
+            print(BannerFactory.create(self.righEntity.getName(), monsterAction, rightAttackData["critical"]))
+        else:
+            monsterActionMethod()
+            print(BannerFactory.create(self.righEntity.getName(), monsterAction))
 
     def isFinished(self):
         if(self.leftEntity.getLife() <= 0 or self.righEntity.getLife() <= 0):

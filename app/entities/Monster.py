@@ -7,3 +7,5 @@ class Monster(Entity):
     minimumDamage = 5
     maximumDamage = 15
     criticalRate = 20
+    defencePercentage = 100
+    evasionChance = 40

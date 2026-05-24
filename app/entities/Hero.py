@@ -7,3 +7,5 @@ class Hero(Entity):
     minimumDamage = 1
     maximumDamage = 10
     criticalRate = 40
+    defencePercentage = 70
+    evasionChance = 80

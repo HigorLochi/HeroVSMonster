@@ -1,0 +1,1 @@
+entityActions = ["attack", "defend", "defend"]
