@@ -20,18 +20,18 @@ Defeat the opponent
 1. Player life = 100
 2. Player damage = 1 - 10
 3. Player critical rate = 40%
-4. Monster life = 150
-5. Monster damage = 5 - 15
-6. Monster critical rate = 20%
+4. Player Defence Percentage = 70%
+5. Player Evasion Chance = 80%
+6. Monster life = 150
+7. Monster damage = 5 - 15
+8. Monster critical rate = 20%
+9. Monster Defence Percentage = 100%
+10. Monster Evasion Chance = 40%
 
-### Player options
-1. Attack( will attack the opponent dealing or not crit damage)
-2. Defend( opponent will deal only 50% of his base attack)
-3. Evade( the opponent's attack will be 50% evadable)
-
-### Monster options
-1. Attack( will attack the player dealing or not crit damage)
-2. Stop ( the monster will do nothing)
+### Options
+1. Attack
+2. Defend
+3. Evade
 
 ## Notes
 1. Console-based application

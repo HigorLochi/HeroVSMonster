@@ -35,6 +35,8 @@ class Match():
             print(BannerFactory.create(self.leftEntity.getName(), playerAction))
 
         monsterAction = entityActions[random.randint(0, len(entityActions) - 1)]
+        print("Monster Action: " + monsterAction)
+
         monsterActionMethod = getattr(self.righEntity, monsterAction)
         if(monsterAction == "attack"):
             rightAttackData = monsterActionMethod(self.leftEntity)
@@ -52,7 +54,7 @@ class Match():
             return False
         
     def printRound(self):
-        print("\n===== Round " + str(self.roundsCount) + " =====\n")
+        print("\n========================= Round " + str(self.roundsCount) + " =========================\n")
 
     def printWinner(self):
         print(self.getWinner().getName() + " wins!")
